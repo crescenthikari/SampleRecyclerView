@@ -20,10 +20,14 @@ public class DetailActivity extends AppCompatActivity {
         detailAddress = (TextView) findViewById(R.id.detail_address);
 
         if (getIntent() != null) {
+            // cek apakah intent memiliki extra bernama EXTRA_NAME
             if (getIntent().hasExtra(EXTRA_NAME)) {
+                // jika punya, set teks detailName menggunakan isi extra EXTRA_NAME
                 detailName.setText(getIntent().getStringExtra(EXTRA_NAME));
             }
+            // cek apakah intent memiliki extra bernama EXTRA_ADDRESS
             if (getIntent().hasExtra(EXTRA_ADDRESS)) {
+                // jika punya, set teks detailAddress menggunakan isi extra EXTRA_ADDRESS
                 detailAddress.setText(getIntent().getStringExtra(EXTRA_ADDRESS));
             }
         }

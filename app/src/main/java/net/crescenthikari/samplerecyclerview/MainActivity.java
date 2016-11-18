@@ -19,10 +19,15 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.Se
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        // buat adapter untuk recylerview
         adapter = new ExampleAdapter(this);
+        // setting listener ketika ada item yang diklik di recyclerview
         adapter.setListener(this);
+        // setting adapter untuk recyclerview dengan adapter yang sudah dibuat
         recyclerView.setAdapter(adapter);
+        // setting linearLayoutManager sebagai layout manager untuk recyclerview
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // tambahkan data dummy
         adapter.addExample(new Example("Test1", "test 123"));
         adapter.addExample(new Example("Test2", "test 123"));
         adapter.addExample(new Example("Test3", "test 123"));
