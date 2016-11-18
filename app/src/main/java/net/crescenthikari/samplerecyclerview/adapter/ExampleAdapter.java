@@ -28,7 +28,6 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
     }
 
     public ExampleAdapter(final Context context, List<Example> data) {
-        examples = new ArrayList<>();
         inflater = LayoutInflater.from(context);
         examples = data;
     }
