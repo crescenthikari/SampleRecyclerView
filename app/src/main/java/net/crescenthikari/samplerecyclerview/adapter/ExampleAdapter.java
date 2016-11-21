@@ -13,6 +13,8 @@ import net.crescenthikari.samplerecyclerview.model.Example;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.support.v7.widget.RecyclerView.NO_POSITION;
+
 /**
  * Created by Muhammad Fiqri Muthohar on 11/18/16.
  */
@@ -39,7 +41,17 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.list_item_layout, parent, false));
+        final ViewHolder myHolder = new ViewHolder(inflater.inflate(R.layout.list_item_layout, parent, false));
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = myHolder.getAdapterPosition();
+                if (pos != NO_POSITION && listener != null) {
+                    listener.onClick(examples.get(pos));
+                }
+            }
+        });
+        return myHolder;
     }
 
     @Override
@@ -47,14 +59,6 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
         final Example data = examples.get(position);
         holder.name.setText(data.name);
         holder.address.setText(data.address);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onClick(data);
-                }
-            }
-        });
     }
 
     @Override
